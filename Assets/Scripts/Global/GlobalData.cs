@@ -15,6 +15,12 @@ namespace Global
         public const string HEROMOVEJOYSTICKNAME = "HeroMoveJoystick";
     }
 
+    public enum ManAniType {
+        Idle,
+        Run,
+        Attack3,
+    }
+
     /// <summary>
     /// 主角攻击方式委托
     /// </summary>

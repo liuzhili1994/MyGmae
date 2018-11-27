@@ -9,14 +9,19 @@ namespace Control
     {
 
         private ETCJoystick heroMoveJoystick;
+        private CharacterController cc;
         public float moveSpeed = 5;
+        private HeroAniPlay ani;
+        public float gravityFlo;
+         
 
         void Start() {
             heroMoveJoystick = ETCInput.GetControlJoystick(GlobalData.HEROMOVEJOYSTICKNAME);
+            cc = GetComponent<CharacterController>();
+            ani = GetComponent<HeroAniPlay>();
 
-            
             heroMoveJoystick.onMove.AddListener(OnMove);
-            heroMoveJoystick.onMove.AddListener(OnMoveEnd);
+            heroMoveJoystick.onMoveEnd.AddListener(OnMoveEnd);
             
         }
        
@@ -28,28 +33,32 @@ namespace Control
 
             if (joyStickX != 0 || joyStickY != 0)
             {
+                //面向前方
                 transform.LookAt(new Vector3(transform.position.x - joyStickX, transform.position.y, transform.position.z - joyStickY));
-
-                transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed);
+                //向前移动
+                //transform.Translate(transform.forward * Time.deltaTime * moveSpeed,Space.World);  //使用该方法主角将无视碰撞 （弃用）
+                cc.Move(transform.forward * Time.deltaTime * moveSpeed);
+                ani.SetAniState(ManAniType.Run);
+                //模拟重力
+                transform.position = new Vector3(transform.position.x,transform.position.y - gravityFlo,transform.position.z);
             }
         }
 
-        void OnMoveEnd(Vector2 v)
+        void OnMoveEnd()
         {
-
+            ani.SetAniState(ManAniType.Idle);
         }
 
         void OnDisable() {
             
             heroMoveJoystick.onMove.RemoveAllListeners();
-            heroMoveJoystick.onMove.RemoveAllListeners();
+            heroMoveJoystick.onMoveEnd.RemoveAllListeners();
         }
 
 
         void OnDestroy() {
-           
             heroMoveJoystick.onMove.RemoveAllListeners();
-            heroMoveJoystick.onMove.RemoveAllListeners();
+            heroMoveJoystick.onMoveEnd.RemoveAllListeners();
         }
 
     }
