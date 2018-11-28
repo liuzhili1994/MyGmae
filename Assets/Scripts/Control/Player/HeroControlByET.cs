@@ -38,7 +38,7 @@ namespace Control
                 //向前移动
                 //transform.Translate(transform.forward * Time.deltaTime * moveSpeed,Space.World);  //使用该方法主角将无视碰撞 （弃用）
                 cc.Move(transform.forward * Time.deltaTime * moveSpeed);
-                ani.SetAniState(ManAniType.Run);
+                ani.SetAniState(AniType.Run);
                 //模拟重力
                 transform.position = new Vector3(transform.position.x,transform.position.y - gravityFlo,transform.position.z);
             }
@@ -46,7 +46,7 @@ namespace Control
 
         void OnMoveEnd()
         {
-            ani.SetAniState(ManAniType.Idle);
+            ani.SetAniState(AniType.Idle);
         }
 
         void OnDisable() {

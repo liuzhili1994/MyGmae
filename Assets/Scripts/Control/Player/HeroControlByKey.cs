@@ -1,19 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Global;
 
 namespace Control
 {
     public class HeroControlByKey : MonoBehaviour
     {
-        private HeroAniPlay ani;
-
-        KeyCode attack = KeyCode.A;
+        
+        public static event HeroAttackDel attackEvent;
+        KeyCode attack = KeyCode.J;
+        KeyCode skill1 = KeyCode.K;
+        KeyCode skill2 = KeyCode.L;
         // Use this for initialization
         void Start()
         {
-            ani = GetComponent<HeroAniPlay>();
+
         }
 
         // Update is called once per frame
@@ -21,7 +23,16 @@ namespace Control
         {
             if (Input.GetKeyDown(attack))
             {
-                ani.SetAniState(Global.ManAniType.Attack3,true);
+                //heroAttack.SetAniState(Global.ManAniType.Attack3,true);
+                attackEvent.Invoke(AniType.Attack3);
+            }
+            if (Input.GetKeyDown(skill1))
+            {
+                attackEvent.Invoke(AniType.Attack1);
+            }
+            if (Input.GetKeyDown(skill2))
+            {
+                attackEvent.Invoke(AniType.Attack2);
             }
         }
     }

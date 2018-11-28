@@ -15,15 +15,17 @@ namespace Global
         public const string HEROMOVEJOYSTICKNAME = "HeroMoveJoystick";
     }
 
-    public enum ManAniType {
+    public enum AniType {
         Idle,
         Run,
         Attack3,
+        Attack1,
+        Attack2,
     }
 
     /// <summary>
     /// 主角攻击方式委托
     /// </summary>
-    public delegate void HeroAttack(string attackType);
+    public delegate void HeroAttackDel(AniType attackType);
 }
 
