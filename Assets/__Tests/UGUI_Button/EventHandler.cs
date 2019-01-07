@@ -40,6 +40,7 @@ public class EventHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
     public void OnPointerDown(PointerEventData eventData)
     {
         //Debug.Log("Pointer Down..");
+
     }
 
     public void OnDrag(PointerEventData eventData)

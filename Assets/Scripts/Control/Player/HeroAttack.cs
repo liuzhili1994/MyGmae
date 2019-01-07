@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Global;
+using System;
 
 namespace Control
 {
@@ -23,6 +24,29 @@ namespace Control
         {
             ani.SetAniState(attackType,true);
         }
+
+
+        private void Update()
+        {
+            //注视最近的敌人
+            LookToNearestEnemy();
+
+            
+        }
+
+
+        #region LookToEnemy
+
+        //字段
+
+
+        
+        private void LookToNearestEnemy()
+        {
+            
+        }
+
+        #endregion
     }
 
 }
