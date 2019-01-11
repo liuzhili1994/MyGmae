@@ -1,0 +1,7 @@
+<HelloXML Langague ="CN" auther ="zhili">
+  <LogPath>G:LogContent.txt</LogPath>
+  <LogState>Develop</LogState>
+  <LogMaxCapacity>2000</LogMaxCapacity>
+  <LogBufferNumber>5</LogBufferNumber>
+</HelloXML>
+

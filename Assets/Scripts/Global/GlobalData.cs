@@ -27,5 +27,39 @@ namespace Global
     /// 主角攻击方式委托
     /// </summary>
     public delegate void HeroAttackDel(AniType attackType);
+
+    public delegate void UpdateUIInfo(KeyValueForUIDel keyValue);
+
+    public class KeyValueForUIDel {
+        private string key;
+        private float value;
+
+        public string Key
+        {
+            get
+            {
+                return key;
+            }
+
+            set
+            {
+                key = value;
+            }
+        }
+
+        public float Value
+        {
+            get
+            {
+                return value;
+            }
+
+            set
+            {
+                this.value = value;
+            }
+        }
+
+    }
 }
 
